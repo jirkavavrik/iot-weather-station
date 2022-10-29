@@ -1,16 +1,16 @@
 [
     {
-        "id": "537436eaf49d1042",
+        "id": "fbd02c9452b160fe",
         "type": "tab",
-        "label": "Flow 1",
+        "label": "Flow 1 - meteostanice",
         "disabled": false,
         "info": "",
         "env": []
     },
     {
-        "id": "42614526d117ab62",
+        "id": "c7605df57fe15765",
         "type": "mqtt in",
-        "z": "537436eaf49d1042",
+        "z": "fbd02c9452b160fe",
         "name": "",
         "topic": "meteostanice/data",
         "qos": "2",
@@ -24,15 +24,15 @@
         "y": 200,
         "wires": [
             [
-                "80ae6889f6a8d0ba",
-                "285747d9cbfe6307"
+                "910e3c7689de577c",
+                "13f7cba0c4c71282"
             ]
         ]
     },
     {
-        "id": "dc16c14ce05e9222",
+        "id": "0ac32249e48b4da2",
         "type": "ui_gauge",
-        "z": "537436eaf49d1042",
+        "z": "fbd02c9452b160fe",
         "name": "Teplota - indikátor",
         "group": "caee160ad529bc24",
         "order": 2,
@@ -52,14 +52,14 @@
         "seg1": "",
         "seg2": "",
         "className": "",
-        "x": 970,
-        "y": 380,
+        "x": 990,
+        "y": 100,
         "wires": []
     },
     {
-        "id": "b07a0cde80f19ec2",
+        "id": "93f3222eb48c3829",
         "type": "inject",
-        "z": "537436eaf49d1042",
+        "z": "fbd02c9452b160fe",
         "d": true,
         "name": "",
         "props": [
@@ -78,14 +78,14 @@
         "y": 120,
         "wires": [
             [
-                "80ae6889f6a8d0ba"
+                "910e3c7689de577c"
             ]
         ]
     },
     {
-        "id": "80ae6889f6a8d0ba",
+        "id": "910e3c7689de577c",
         "type": "function",
-        "z": "537436eaf49d1042",
+        "z": "fbd02c9452b160fe",
         "name": "",
         "func": "var teplota;\nvar vlhkost;\nvar tlak;\nteplota = { payload: Math.round(msg.payload.temp*100)/100 };\nvlhkost = { payload: Math.round(msg.payload.humidity*100)/100 };\ntlak = {payload: msg.payload.pressure};\n\nreturn [ teplota, vlhkost, tlak ];",
         "outputs": 3,
@@ -93,30 +93,30 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 620,
-        "y": 240,
+        "x": 600,
+        "y": 260,
         "wires": [
             [
-                "dc16c14ce05e9222",
-                "06fb2a73efce729a",
-                "4b6ea53ea72c3b88"
+                "0ac32249e48b4da2",
+                "18a240f7414ececf",
+                "870cd8428476a0e0"
             ],
             [
-                "fe9d14656415ebca",
-                "f226861c172a32fb",
-                "53147e407d3965fd"
+                "c50cd1722452dd7b",
+                "48ddaaf8e09833d8",
+                "d97117f3501ce676"
             ],
             [
-                "01972e5b33d310df",
-                "c10bd53df6f4eede",
-                "23a71e8e586fd8cd"
+                "1faf66db222a0ffa",
+                "47c358ba798c79b2",
+                "4f5685474b6d5c82"
             ]
         ]
     },
     {
-        "id": "285747d9cbfe6307",
+        "id": "13f7cba0c4c71282",
         "type": "debug",
-        "z": "537436eaf49d1042",
+        "z": "fbd02c9452b160fe",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -130,9 +130,9 @@
         "wires": []
     },
     {
-        "id": "fe9d14656415ebca",
+        "id": "c50cd1722452dd7b",
         "type": "ui_gauge",
-        "z": "537436eaf49d1042",
+        "z": "fbd02c9452b160fe",
         "name": "Vlhkost - indikátor",
         "group": "caee160ad529bc24",
         "order": 4,
@@ -152,14 +152,14 @@
         "seg1": "",
         "seg2": "",
         "className": "",
-        "x": 970,
-        "y": 420,
+        "x": 990,
+        "y": 280,
         "wires": []
     },
     {
-        "id": "01972e5b33d310df",
+        "id": "1faf66db222a0ffa",
         "type": "ui_gauge",
-        "z": "537436eaf49d1042",
+        "z": "fbd02c9452b160fe",
         "name": "Tlak - indikátor",
         "group": "caee160ad529bc24",
         "order": 6,
@@ -179,14 +179,14 @@
         "seg1": "",
         "seg2": "",
         "className": "",
-        "x": 960,
+        "x": 980,
         "y": 460,
         "wires": []
     },
     {
-        "id": "06fb2a73efce729a",
+        "id": "18a240f7414ececf",
         "type": "ui_chart",
-        "z": "537436eaf49d1042",
+        "z": "fbd02c9452b160fe",
         "name": "Teplota - průběh",
         "group": "f629eb808ffff5bb",
         "order": 0,
@@ -221,16 +221,16 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 960,
-        "y": 500,
+        "x": 980,
+        "y": 140,
         "wires": [
             []
         ]
     },
     {
-        "id": "f226861c172a32fb",
+        "id": "48ddaaf8e09833d8",
         "type": "ui_chart",
-        "z": "537436eaf49d1042",
+        "z": "fbd02c9452b160fe",
         "name": "Vlhkost - průběh",
         "group": "f629eb808ffff5bb",
         "order": 0,
@@ -265,16 +265,16 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 960,
-        "y": 540,
+        "x": 980,
+        "y": 320,
         "wires": [
             []
         ]
     },
     {
-        "id": "c10bd53df6f4eede",
+        "id": "47c358ba798c79b2",
         "type": "ui_chart",
-        "z": "537436eaf49d1042",
+        "z": "fbd02c9452b160fe",
         "name": "Tlak - průběh",
         "group": "f629eb808ffff5bb",
         "order": 0,
@@ -309,76 +309,52 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 950,
-        "y": 580,
+        "x": 970,
+        "y": 500,
         "wires": [
             []
         ]
     },
     {
-        "id": "4b6ea53ea72c3b88",
-        "type": "http request",
-        "z": "537436eaf49d1042",
+        "id": "870cd8428476a0e0",
+        "type": "blynk-iot-out-write",
+        "z": "fbd02c9452b160fe",
         "name": "Odeslat teplotu na Blynk",
-        "method": "GET",
-        "ret": "txt",
-        "paytoqs": "ignore",
-        "url": "https://blynk.cloud/external/api/update?token=API_KEY&v0={{{payload}}}",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "authType": "",
-        "senderr": false,
-        "x": 970,
-        "y": 120,
-        "wires": [
-            []
-        ]
+        "pin": "0",
+        "pinmode": 0,
+        "client": "c8522eeb8d54832a",
+        "x": 1010,
+        "y": 40,
+        "wires": []
     },
     {
-        "id": "53147e407d3965fd",
-        "type": "http request",
-        "z": "537436eaf49d1042",
+        "id": "d97117f3501ce676",
+        "type": "blynk-iot-out-write",
+        "z": "fbd02c9452b160fe",
         "name": "Odeslat vlhkost na Blynk",
-        "method": "GET",
-        "ret": "txt",
-        "paytoqs": "ignore",
-        "url": "https://blynk.cloud/external/api/update?token=API_KEY&v1={{{payload}}}",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "authType": "",
-        "senderr": false,
-        "x": 970,
-        "y": 180,
-        "wires": [
-            []
-        ]
+        "pin": "1",
+        "pinmode": 0,
+        "client": "c8522eeb8d54832a",
+        "x": 1010,
+        "y": 220,
+        "wires": []
     },
     {
-        "id": "23a71e8e586fd8cd",
-        "type": "http request",
-        "z": "537436eaf49d1042",
+        "id": "4f5685474b6d5c82",
+        "type": "blynk-iot-out-write",
+        "z": "fbd02c9452b160fe",
         "name": "Odeslat tlak na Blynk",
-        "method": "GET",
-        "ret": "txt",
-        "paytoqs": "ignore",
-        "url": "https://blynk.cloud/external/api/update?token=API_KEY&v2={{{payload}}}",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "authType": "",
-        "senderr": false,
-        "x": 960,
-        "y": 240,
-        "wires": [
-            []
-        ]
+        "pin": "2",
+        "pinmode": 0,
+        "client": "c8522eeb8d54832a",
+        "x": 1000,
+        "y": 400,
+        "wires": []
     },
     {
-        "id": "5e4ccb766877bab4",
+        "id": "1a9cd503a2f7c985",
         "type": "ui_spacer",
-        "z": "537436eaf49d1042",
+        "z": "fbd02c9452b160fe",
         "name": "spacer",
         "group": "caee160ad529bc24",
         "order": 3,
@@ -386,9 +362,9 @@
         "height": "2"
     },
     {
-        "id": "ca4da31a848467dc",
+        "id": "d3f78ff43330a733",
         "type": "ui_spacer",
-        "z": "537436eaf49d1042",
+        "z": "fbd02c9452b160fe",
         "name": "spacer",
         "group": "caee160ad529bc24",
         "order": 5,
@@ -396,9 +372,9 @@
         "height": "2"
     },
     {
-        "id": "08a4fb09f732772f",
+        "id": "c109eeebb09e8be1",
         "type": "ui_spacer",
-        "z": "537436eaf49d1042",
+        "z": "fbd02c9452b160fe",
         "name": "spacer",
         "group": "caee160ad529bc24",
         "order": 1,
@@ -409,7 +385,7 @@
         "id": "d5cfb555e0d2a2d9",
         "type": "mqtt-broker",
         "name": "Raspberry MQQT",
-        "broker": "raspberrypi1.local",
+        "broker": "raspberrypi.local",
         "port": "1883",
         "clientid": "",
         "autoConnect": true,
@@ -429,6 +405,7 @@
         "willQos": "0",
         "willPayload": "",
         "willMsg": {},
+        "userProps": "",
         "sessionExpiry": ""
     },
     {
@@ -454,10 +431,26 @@
         "className": ""
     },
     {
+        "id": "c8522eeb8d54832a",
+        "type": "blynk-iot-client",
+        "name": "Blynk client",
+        "path": "blynk.cloud",
+        "key": "YOUR KEY",
+        "tmpl": "YOUR TEMPLATE",
+        "dbg_all": false,
+        "dbg_read": false,
+        "dbg_prop": false,
+        "dbg_sync": false,
+        "dbg_low": false,
+        "dbg_pins": "",
+        "multi_cmd": false,
+        "enabled": true
+    },
+    {
         "id": "ed8ae96ce615d403",
         "type": "ui_tab",
         "name": "Meteostanice venku",
-        "icon": "dashboard",
+        "icon": "wi-wu-partlycloudy",
         "disabled": false,
         "hidden": false
     }
