@@ -8,28 +8,6 @@
         "env": []
     },
     {
-        "id": "c7605df57fe15765",
-        "type": "mqtt in",
-        "z": "fbd02c9452b160fe",
-        "name": "",
-        "topic": "meteostanice/data",
-        "qos": "2",
-        "datatype": "json",
-        "broker": "d5cfb555e0d2a2d9",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 310,
-        "y": 200,
-        "wires": [
-            [
-                "910e3c7689de577c",
-                "13f7cba0c4c71282"
-            ]
-        ]
-    },
-    {
         "id": "0ac32249e48b4da2",
         "type": "ui_gauge",
         "z": "fbd02c9452b160fe",
@@ -52,81 +30,8 @@
         "seg1": "",
         "seg2": "",
         "className": "",
-        "x": 990,
-        "y": 100,
-        "wires": []
-    },
-    {
-        "id": "93f3222eb48c3829",
-        "type": "inject",
-        "z": "fbd02c9452b160fe",
-        "d": true,
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            }
-        ],
-        "repeat": "10",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "{\"temp\":24,\"humidity\":66,\"pressure\":999}",
-        "payloadType": "json",
-        "x": 310,
+        "x": 850,
         "y": 120,
-        "wires": [
-            [
-                "910e3c7689de577c"
-            ]
-        ]
-    },
-    {
-        "id": "910e3c7689de577c",
-        "type": "function",
-        "z": "fbd02c9452b160fe",
-        "name": "",
-        "func": "var teplota;\nvar vlhkost;\nvar tlak;\nteplota = { payload: Math.round(msg.payload.temp*100)/100 };\nvlhkost = { payload: Math.round(msg.payload.humidity*100)/100 };\ntlak = {payload: msg.payload.pressure};\n\nreturn [ teplota, vlhkost, tlak ];",
-        "outputs": 3,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 600,
-        "y": 260,
-        "wires": [
-            [
-                "0ac32249e48b4da2",
-                "18a240f7414ececf",
-                "870cd8428476a0e0"
-            ],
-            [
-                "c50cd1722452dd7b",
-                "48ddaaf8e09833d8",
-                "d97117f3501ce676"
-            ],
-            [
-                "1faf66db222a0ffa",
-                "47c358ba798c79b2",
-                "4f5685474b6d5c82"
-            ]
-        ]
-    },
-    {
-        "id": "13f7cba0c4c71282",
-        "type": "debug",
-        "z": "fbd02c9452b160fe",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 630,
-        "y": 60,
         "wires": []
     },
     {
@@ -152,8 +57,8 @@
         "seg1": "",
         "seg2": "",
         "className": "",
-        "x": 990,
-        "y": 280,
+        "x": 850,
+        "y": 300,
         "wires": []
     },
     {
@@ -179,8 +84,8 @@
         "seg1": "",
         "seg2": "",
         "className": "",
-        "x": 980,
-        "y": 460,
+        "x": 840,
+        "y": 480,
         "wires": []
     },
     {
@@ -221,8 +126,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 980,
-        "y": 140,
+        "x": 850,
+        "y": 160,
         "wires": [
             []
         ]
@@ -265,8 +170,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 980,
-        "y": 320,
+        "x": 850,
+        "y": 340,
         "wires": [
             []
         ]
@@ -309,8 +214,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 970,
-        "y": 500,
+        "x": 840,
+        "y": 520,
         "wires": [
             []
         ]
@@ -323,8 +228,8 @@
         "pin": "0",
         "pinmode": 0,
         "client": "c8522eeb8d54832a",
-        "x": 1010,
-        "y": 40,
+        "x": 870,
+        "y": 60,
         "wires": []
     },
     {
@@ -335,8 +240,8 @@
         "pin": "1",
         "pinmode": 0,
         "client": "c8522eeb8d54832a",
-        "x": 1010,
-        "y": 220,
+        "x": 870,
+        "y": 240,
         "wires": []
     },
     {
@@ -347,9 +252,135 @@
         "pin": "2",
         "pinmode": 0,
         "client": "c8522eeb8d54832a",
-        "x": 1000,
-        "y": 400,
+        "x": 860,
+        "y": 420,
         "wires": []
+    },
+    {
+        "id": "3c93a4a6390c0f1b",
+        "type": "mqtt in",
+        "z": "fbd02c9452b160fe",
+        "name": "",
+        "topic": "meteostanice/teplota",
+        "qos": "2",
+        "datatype": "json",
+        "broker": "d5cfb555e0d2a2d9",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 260,
+        "y": 220,
+        "wires": [
+            [
+                "348a7c079116c940"
+            ]
+        ]
+    },
+    {
+        "id": "73b286acc55063f8",
+        "type": "mqtt in",
+        "z": "fbd02c9452b160fe",
+        "name": "",
+        "topic": "meteostanice/tlak",
+        "qos": "2",
+        "datatype": "json",
+        "broker": "d5cfb555e0d2a2d9",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 240,
+        "y": 340,
+        "wires": [
+            [
+                "8e3a418f4ec8583a"
+            ]
+        ]
+    },
+    {
+        "id": "d90e2989f32786d7",
+        "type": "mqtt in",
+        "z": "fbd02c9452b160fe",
+        "name": "",
+        "topic": "meteostanice/vlhkost",
+        "qos": "2",
+        "datatype": "json",
+        "broker": "d5cfb555e0d2a2d9",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 260,
+        "y": 280,
+        "wires": [
+            [
+                "fdfac88e99270273"
+            ]
+        ]
+    },
+    {
+        "id": "348a7c079116c940",
+        "type": "function",
+        "z": "fbd02c9452b160fe",
+        "name": "",
+        "func": "var hodnota;\n\n/* zaokrouhleni na 2 desetinna mista */\nhodnota = { payload: Math.round(parseFloat(msg.payload)*100)/100 };\n\nreturn hodnota;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 240,
+        "wires": [
+            [
+                "870cd8428476a0e0",
+                "0ac32249e48b4da2",
+                "18a240f7414ececf"
+            ]
+        ]
+    },
+    {
+        "id": "fdfac88e99270273",
+        "type": "function",
+        "z": "fbd02c9452b160fe",
+        "name": "",
+        "func": "var hodnota;\n\n/* zaokrouhleni na 2 desetinna mista */\nhodnota = { payload: Math.round(parseFloat(msg.payload)*100)/100 };\n\nreturn hodnota;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 280,
+        "wires": [
+            [
+                "d97117f3501ce676",
+                "c50cd1722452dd7b",
+                "48ddaaf8e09833d8"
+            ]
+        ]
+    },
+    {
+        "id": "8e3a418f4ec8583a",
+        "type": "function",
+        "z": "fbd02c9452b160fe",
+        "name": "",
+        "func": "var hodnota;\n\n/* zaokrouhleni na 2 desetinna mista */\nhodnota = { payload: Math.round(parseFloat(msg.payload)*100)/100 };\n\nreturn hodnota;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 320,
+        "wires": [
+            [
+                "4f5685474b6d5c82",
+                "1faf66db222a0ffa",
+                "47c358ba798c79b2"
+            ]
+        ]
     },
     {
         "id": "1a9cd503a2f7c985",
@@ -382,33 +413,6 @@
         "height": "1"
     },
     {
-        "id": "d5cfb555e0d2a2d9",
-        "type": "mqtt-broker",
-        "name": "Raspberry MQQT",
-        "broker": "raspberrypi.local",
-        "port": "1883",
-        "clientid": "",
-        "autoConnect": true,
-        "usetls": false,
-        "protocolVersion": "4",
-        "keepalive": "180",
-        "cleansession": true,
-        "birthTopic": "",
-        "birthQos": "0",
-        "birthPayload": "",
-        "birthMsg": {},
-        "closeTopic": "",
-        "closeQos": "0",
-        "closePayload": "",
-        "closeMsg": {},
-        "willTopic": "",
-        "willQos": "0",
-        "willPayload": "",
-        "willMsg": {},
-        "userProps": "",
-        "sessionExpiry": ""
-    },
-    {
         "id": "caee160ad529bc24",
         "type": "ui_group",
         "name": "Poslední hodnoty",
@@ -435,8 +439,8 @@
         "type": "blynk-iot-client",
         "name": "Blynk client",
         "path": "blynk.cloud",
-        "key": "YOUR KEY",
-        "tmpl": "YOUR TEMPLATE",
+        "key": "D4vlXzc_OJs3aXxxJ9Bvm2AnaJaHcEFd",
+        "tmpl": "TMPLSxNhMZ9B",
         "dbg_all": false,
         "dbg_read": false,
         "dbg_prop": false,
@@ -445,6 +449,33 @@
         "dbg_pins": "",
         "multi_cmd": false,
         "enabled": true
+    },
+    {
+        "id": "d5cfb555e0d2a2d9",
+        "type": "mqtt-broker",
+        "name": "Raspberry MQQT",
+        "broker": "raspberrypi.local",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "180",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
     },
     {
         "id": "ed8ae96ce615d403",
