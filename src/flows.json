@@ -221,42 +221,6 @@
         ]
     },
     {
-        "id": "870cd8428476a0e0",
-        "type": "blynk-iot-out-write",
-        "z": "fbd02c9452b160fe",
-        "name": "Odeslat teplotu na Blynk",
-        "pin": "0",
-        "pinmode": 0,
-        "client": "c8522eeb8d54832a",
-        "x": 870,
-        "y": 60,
-        "wires": []
-    },
-    {
-        "id": "d97117f3501ce676",
-        "type": "blynk-iot-out-write",
-        "z": "fbd02c9452b160fe",
-        "name": "Odeslat vlhkost na Blynk",
-        "pin": "1",
-        "pinmode": 0,
-        "client": "c8522eeb8d54832a",
-        "x": 870,
-        "y": 240,
-        "wires": []
-    },
-    {
-        "id": "4f5685474b6d5c82",
-        "type": "blynk-iot-out-write",
-        "z": "fbd02c9452b160fe",
-        "name": "Odeslat tlak na Blynk",
-        "pin": "2",
-        "pinmode": 0,
-        "client": "c8522eeb8d54832a",
-        "x": 860,
-        "y": 420,
-        "wires": []
-    },
-    {
         "id": "3c93a4a6390c0f1b",
         "type": "mqtt in",
         "z": "fbd02c9452b160fe",
@@ -337,6 +301,7 @@
                 "870cd8428476a0e0",
                 "0ac32249e48b4da2",
                 "18a240f7414ececf",
+                "a209cab58b0660e5",
                 "068947b3d9d1db31"
             ]
         ]
@@ -359,7 +324,8 @@
                 "d97117f3501ce676",
                 "c50cd1722452dd7b",
                 "48ddaaf8e09833d8",
-                "068947b3d9d1db31"
+                "068947b3d9d1db31",
+                "b75ad7ace8ab7fa7"
             ]
         ]
     },
@@ -382,7 +348,8 @@
                 "4f5685474b6d5c82",
                 "1faf66db222a0ffa",
                 "47c358ba798c79b2",
-                "068947b3d9d1db31"
+                "068947b3d9d1db31",
+                "d31ac9e866bf5be1"
             ]
         ]
     },
@@ -529,6 +496,60 @@
         ]
     },
     {
+        "id": "a209cab58b0660e5",
+        "type": "mqtt out",
+        "z": "fbd02c9452b160fe",
+        "name": "Adafruit IO - teplota",
+        "topic": "jirivavrik/feeds/doma.teplota",
+        "qos": "1",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "7d57cad0f0369e55",
+        "x": 850,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "b75ad7ace8ab7fa7",
+        "type": "mqtt out",
+        "z": "fbd02c9452b160fe",
+        "name": "Adafruit IO - vlhkost",
+        "topic": "jirivavrik/feeds/doma.vlhkost",
+        "qos": "1",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "7d57cad0f0369e55",
+        "x": 850,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "d31ac9e866bf5be1",
+        "type": "mqtt out",
+        "z": "fbd02c9452b160fe",
+        "name": "Adafruit IO - tlak",
+        "topic": "jirivavrik/feeds/doma.tlak",
+        "qos": "1",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "7d57cad0f0369e55",
+        "x": 840,
+        "y": 420,
+        "wires": []
+    },
+    {
         "id": "1a9cd503a2f7c985",
         "type": "ui_spacer",
         "z": "fbd02c9452b160fe",
@@ -581,21 +602,6 @@
         "className": ""
     },
     {
-        "id": "c8522eeb8d54832a",
-        "type": "blynk-iot-client",
-        "name": "Blynk client",
-        "path": "blynk.cloud",
-        "key": "YOUR BLYNK KEY",
-        "tmpl": "YOUR BLYNK TEMPLATE ID",
-        "dbg_all": false,
-        "dbg_prop": false,
-        "dbg_sync": false,
-        "dbg_low": false,
-        "dbg_pins": "",
-        "multi_cmd": false,
-        "enabled": true
-    },
-    {
         "id": "d5cfb555e0d2a2d9",
         "type": "mqtt-broker",
         "name": "Raspberry MQQT",
@@ -630,11 +636,52 @@
         "mode": "RWC"
     },
     {
+        "id": "7d57cad0f0369e55",
+        "type": "mqtt-broker",
+        "name": "Adafruit IO ",
+        "broker": "io.adafruit.com",
+        "port": "8883",
+        "tls": "",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": true,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
         "id": "ed8ae96ce615d403",
         "type": "ui_tab",
         "name": "Meteostanice venku",
         "icon": "wi-wu-partlycloudy",
         "disabled": false,
         "hidden": false
+    },
+    {
+        "id": "c6ac60490851e72a",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-dashboard": "3.6.5",
+            "node-red-node-sqlite": "1.1.0"
+        }
     }
 ]
