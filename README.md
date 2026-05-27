@@ -20,5 +20,5 @@ In the Node-RED flow don't forget to rewrite the API_KEY in order to send data t
 ## Screenshots of dashboards
 ### In Node-RED:
 ![Screenshot of dashboard in Node-RED](doc/screenshot1.png)
-### In Blynk cloud:
+### Adafruit IO:
 ![Screenshot of a possible dashboard in Blynk](doc/screenshot2.png)
