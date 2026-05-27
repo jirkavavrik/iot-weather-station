@@ -298,11 +298,11 @@
         "y": 240,
         "wires": [
             [
-                "870cd8428476a0e0",
                 "0ac32249e48b4da2",
                 "18a240f7414ececf",
+                "068947b3d9d1db31",
                 "a209cab58b0660e5",
-                "068947b3d9d1db31"
+                "1e30421eb49f24ab"
             ]
         ]
     },
@@ -321,11 +321,11 @@
         "y": 280,
         "wires": [
             [
-                "d97117f3501ce676",
                 "c50cd1722452dd7b",
                 "48ddaaf8e09833d8",
                 "068947b3d9d1db31",
-                "b75ad7ace8ab7fa7"
+                "b75ad7ace8ab7fa7",
+                "1e30421eb49f24ab"
             ]
         ]
     },
@@ -345,7 +345,6 @@
         "y": 320,
         "wires": [
             [
-                "4f5685474b6d5c82",
                 "1faf66db222a0ffa",
                 "47c358ba798c79b2",
                 "068947b3d9d1db31",
@@ -368,7 +367,7 @@
         "useparts": true,
         "accumulate": false,
         "timeout": "",
-        "count": "3",
+        "count": "4",
         "reduceRight": false,
         "reduceExp": "",
         "reduceInit": "",
@@ -404,7 +403,7 @@
         "type": "function",
         "z": "fbd02c9452b160fe",
         "name": "",
-        "func": "var hodnota;\n\nhodnota = { payload: \"temp=\" + msg.payload[\"meteostanice/teplota\"] + \"&rh=\" + msg.payload[\"meteostanice/vlhkost\"] + \"&mbar=\" + msg.payload[\"meteostanice/tlak\"] };\n\nreturn hodnota;",
+        "func": "var hodnota;\n\nhodnota = { payload: \"temp=\" + msg.payload[\"meteostanice/teplota\"] + \"&rh=\" + msg.payload[\"meteostanice/vlhkost\"] + \"&mbar=\" + msg.payload[\"meteostanice/tlak\"] + \"&dewpoint=\" + msg.payload[\"meteostanice/dewpoint\"] };\n\nreturn hodnota;",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
@@ -427,7 +426,7 @@
         "method": "GET",
         "ret": "txt",
         "paytoqs": "ignore",
-        "url": "https://stations.windy.com/pws/update/__YOUR_WINDY_API_KEY__?{{{payload}}}",
+        "url": "https://stations.windy.com/pws/update/API_KEY?{{{payload}}}",
         "tls": "",
         "persist": false,
         "proxy": "",
@@ -448,7 +447,7 @@
         "type": "function",
         "z": "fbd02c9452b160fe",
         "name": "",
-        "func": "msg.topic = `INSERT INTO sensor_data (timestamp, temperature, humidity, pressure) VALUES (datetime('now','localtime'), $temperature, $humidity, $pressure)`;\nmsg.payload = [msg.payload[\"meteostanice/teplota\"], msg.payload[\"meteostanice/vlhkost\"], msg.payload[\"meteostanice/tlak\"]]\nreturn msg;",
+        "func": "msg.topic = `INSERT INTO sensor_data (timestamp, temperature, humidity, pressure, dewpoint) VALUES (datetime('now','localtime'), $temperature, $humidity, $pressure, $dewpoint)`;\nmsg.payload = [msg.payload[\"meteostanice/teplota\"], msg.payload[\"meteostanice/vlhkost\"], msg.payload[\"meteostanice/tlak\"], msg.payload[\"meteostanice/dewpoint\"]]\nreturn msg;",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
@@ -548,6 +547,55 @@
         "x": 840,
         "y": 420,
         "wires": []
+    },
+    {
+        "id": "906cbfde0d6f50ee",
+        "type": "function",
+        "z": "fbd02c9452b160fe",
+        "name": "",
+        "func": "var hodnota;\n\nvar t_val = msg.payload[\"meteostanice/teplota\"];\nvar rh_val = msg.payload[\"meteostanice/vlhkost\"]\n\n/* Magnus formula */\nvar b = 17.625;\nvar c = 243.04;\nvar td;\nfunction g(t,rh) {\n  return (Math.log(rh/100)+(b*t)/(c+t));\n}\ntd = (c*g(t_val,rh_val))/(b-g(t_val,rh_val))\n\n\n/* zaokrouhleni na 2 desetinna mista */\nhodnota = { payload: Math.round(parseFloat(td)*100)/100, topic: \"meteostanice/dewpoint\" };\n\nreturn hodnota;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 560,
+        "wires": [
+            [
+                "068947b3d9d1db31"
+            ]
+        ]
+    },
+    {
+        "id": "1e30421eb49f24ab",
+        "type": "join",
+        "z": "fbd02c9452b160fe",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "useparts": true,
+        "accumulate": false,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 410,
+        "y": 440,
+        "wires": [
+            [
+                "906cbfde0d6f50ee"
+            ]
+        ]
     },
     {
         "id": "1a9cd503a2f7c985",
@@ -676,7 +724,7 @@
         "hidden": false
     },
     {
-        "id": "c6ac60490851e72a",
+        "id": "ed970748e6d95982",
         "type": "global-config",
         "env": [],
         "modules": {
