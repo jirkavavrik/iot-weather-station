@@ -366,7 +366,7 @@
         "joinerType": "str",
         "useparts": true,
         "accumulate": false,
-        "timeout": "",
+        "timeout": "60",
         "count": "4",
         "reduceRight": false,
         "reduceExp": "",
@@ -724,7 +724,7 @@
         "hidden": false
     },
     {
-        "id": "ed970748e6d95982",
+        "id": "657b4639aa0c0c2f",
         "type": "global-config",
         "env": [],
         "modules": {
