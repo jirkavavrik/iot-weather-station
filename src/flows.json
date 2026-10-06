@@ -403,7 +403,7 @@
         "type": "function",
         "z": "fbd02c9452b160fe",
         "name": "",
-        "func": "var hodnota;\n\nhodnota = { payload: \"temp=\" + msg.payload[\"meteostanice/teplota\"] + \"&humidity=\" + msg.payload[\"meteostanice/vlhkost\"] + \"&mbar=\" + msg.payload[\"meteostanice/tlak\"] + \"&dewpoint=\" + msg.payload[\"meteostanice/dewpoint\"] + \"&id=WINDY_STATION_ID&PASSWORD=WINDY_STATION_PASSWORD\" };\n\nreturn hodnota",
+        "func": "var hodnota;\n\nhodnota = { payload: \"temp=\" + msg.payload[\"meteostanice/teplota\"] + \"&humidity=\" + msg.payload[\"meteostanice/vlhkost\"] + \"&mbar=\" + msg.payload[\"meteostanice/tlak\"] + \"&dewpoint=\" + msg.payload[\"meteostanice/dewpoint\"] + \"&id=f0d61b13&PASSWORD=7d7b74d7ec484527c35b6d9def6b9266c63ca3053b328981e70dabfc9379cdc0\" };\n\nreturn hodnota;",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
@@ -742,7 +742,7 @@
         "hidden": false
     },
     {
-        "id": "2a176094a47d7b01",
+        "id": "2aa40130df107edd",
         "type": "global-config",
         "env": [],
         "modules": {

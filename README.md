@@ -1,6 +1,6 @@
 # iot-weather-station
 
-IoT weather station is an Arduino Nano 33 IoT based weather station that reads data about temperature, humidity and air pressure using sensors SHT30 and BMP180. It then sends them via MQTT periodically to a device running a Node-RED instance taht displays the info on a web dashboard. Node-RED flow is also configured to send the data to Blynk cloud.
+IoT weather station is an Arduino Nano 33 IoT based weather station that reads data about temperature, humidity and air pressure using sensors SHT30 and BMP180. It then sends them via MQTT periodically to a device running a Node-RED instance taht displays the info on a web dashboard. Node-RED flow is also configured to send the data to Adafruit IO cloud (using MQTT).
 
 ## Ignored file should look like this:
 
@@ -10,8 +10,6 @@ IoT weather station is an Arduino Nano 33 IoT based weather station that reads d
 #define SECRET_SSID "your ssid"
 #define SECRET_PASS "your password"
 ```
-In the Node-RED flow don't forget to rewrite the API_KEY in order to send data to Blynk cloud.
-
 ## Photos of the weather station
 
 ![Photo 1 of the weather station](doc/photo1.jpg)
@@ -21,4 +19,4 @@ In the Node-RED flow don't forget to rewrite the API_KEY in order to send data t
 ### In Node-RED:
 ![Screenshot of dashboard in Node-RED](doc/screenshot1.png)
 ### Adafruit IO:
-![Screenshot of a possible dashboard in Blynk](doc/screenshot2.png)
+![Screenshot of a possible dashboard in Adafruit IO](doc/screenshot2.png)
