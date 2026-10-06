@@ -394,8 +394,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 940,
-        "y": 700,
+        "x": 1140,
+        "y": 680,
         "wires": []
     },
     {
@@ -403,7 +403,7 @@
         "type": "function",
         "z": "fbd02c9452b160fe",
         "name": "",
-        "func": "var hodnota;\n\nhodnota = { payload: \"temp=\" + msg.payload[\"meteostanice/teplota\"] + \"&rh=\" + msg.payload[\"meteostanice/vlhkost\"] + \"&mbar=\" + msg.payload[\"meteostanice/tlak\"] + \"&dewpoint=\" + msg.payload[\"meteostanice/dewpoint\"] };\n\nreturn hodnota;",
+        "func": "var hodnota;\n\nhodnota = { payload: \"temp=\" + msg.payload[\"meteostanice/teplota\"] + \"&humidity=\" + msg.payload[\"meteostanice/vlhkost\"] + \"&mbar=\" + msg.payload[\"meteostanice/tlak\"] + \"&dewpoint=\" + msg.payload[\"meteostanice/dewpoint\"] + \"&id=WINDY_STATION_ID&PASSWORD=WINDY_STATION_PASSWORD\" };\n\nreturn hodnota",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
@@ -426,7 +426,7 @@
         "method": "GET",
         "ret": "txt",
         "paytoqs": "ignore",
-        "url": "https://stations.windy.com/pws/update/API_KEY?{{{payload}}}",
+        "url": "https://stations.windy.com/api/v2/observation/update?{{{payload}}}",
         "tls": "",
         "persist": false,
         "proxy": "",
@@ -438,7 +438,8 @@
         "y": 640,
         "wires": [
             [
-                "9159b27eee867172"
+                "9159b27eee867172",
+                "d6c7fb4431da8ac9"
             ]
         ]
     },
@@ -598,6 +599,23 @@
         ]
     },
     {
+        "id": "d6c7fb4431da8ac9",
+        "type": "debug",
+        "z": "fbd02c9452b160fe",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "statusCode",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 640,
+        "wires": []
+    },
+    {
         "id": "1a9cd503a2f7c985",
         "type": "ui_spacer",
         "z": "fbd02c9452b160fe",
@@ -724,7 +742,7 @@
         "hidden": false
     },
     {
-        "id": "657b4639aa0c0c2f",
+        "id": "2a176094a47d7b01",
         "type": "global-config",
         "env": [],
         "modules": {
